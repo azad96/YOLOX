@@ -18,6 +18,7 @@ from yolox.utils import fuse_model, get_model_info, postprocess, vis
 
 IMAGE_EXT = [".jpg", ".jpeg", ".webp", ".bmp", ".png"]
 
+CUSTOM_CLASSES = ["car"]
 
 def make_parser():
     parser = argparse.ArgumentParser("YOLOX Demo!")
@@ -303,7 +304,7 @@ def main(exp, args):
         decoder = None
 
     predictor = Predictor(
-        model, exp, COCO_CLASSES, trt_file, decoder,
+        model, exp, CUSTOM_CLASSES, trt_file, decoder,
         args.device, args.fp16, args.legacy,
     )
     current_time = time.localtime()
